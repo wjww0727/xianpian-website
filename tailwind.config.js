@@ -10,7 +10,7 @@ module.exports = {
           "blue-deep": "#15204a",
           red: "#ab1818",
           "red-dark": "#8a1212",
-          gold: "#ffd900",
+          gold: "#ffffff",
           "gold-dark": "#d9b800",
           ink: "#1f2430",
           gray: "#6b7280",
