@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>徐州贤片网络科技有限公司 - 展厅设计·文化墙·视频制作·官网开发</title>
+  <meta name="description" content="徐州贤片网络科技有限公司，立足徐州，面向政企单位提供展厅设计、文化墙制作、视频拍摄与后期制作、企业官网开发建设一站式数字文化视觉解决方案。" />
+  <meta name="keywords" content="徐州贤片网络科技,展厅设计,文化墙制作,宣传片拍摄,企业官网开发,党建展厅,企业文化墙,徐州" />
+  <meta property="og:title" content="徐州贤片网络科技有限公司" />
+  <meta property="og:description" content="以视觉赋能品牌，为政企打造展厅、文化、数字网站作品。" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='12' fill='%23ab1818'/%3E%3Ctext x='32' y='44' font-family='Arial,Helvetica,sans-serif' font-size='34' font-weight='800' fill='%23ffffff' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body class="bg-white">
+
+  <!-- ======================= 顶部导航 ======================= -->
+  <header id="siteHeader" class="fixed inset-x-0 top-0 z-50 border-b border-slate-100 bg-white/90 backdrop-blur transition-shadow duration-300">
+    <div class="container-x flex h-16 items-center justify-between md:h-20">
+      <!-- Logo -->
+      <a href="#home" class="flex items-center" aria-label="徐州贤片网络科技有限公司">
+        <svg viewBox="0 0 360 84" class="h-9 w-auto md:h-10" role="img" aria-label="XIANPIAN 贤片">
+          <text x="0" y="59" font-family="Arial,Helvetica,sans-serif" font-size="54" font-weight="800" letter-spacing="3" fill="#1f2430">XIAN</text>
+          <rect x="185" y="8" width="175" height="68" rx="12" fill="#ab1818"/>
+          <text x="272.5" y="59" font-family="Arial,Helvetica,sans-serif" font-size="54" font-weight="800" letter-spacing="3" text-anchor="middle" fill="#ffffff">PIAN</text>
+        </svg>
+      </a>
+
+      <!-- 桌面导航 -->
+      <nav class="hidden items-center gap-7 text-sm font-medium text-slate-600 lg:flex" aria-label="主导航">
+        <a href="#home" class="transition hover:text-brand-red">首页</a>
+        <a href="#about" class="transition hover:text-brand-red">关于我们</a>
+        <a href="#services" class="transition hover:text-brand-red">核心业务</a>
+        <a href="#works" class="transition hover:text-brand-red">案例展示</a>
+        <a href="#process" class="transition hover:text-brand-red">服务流程</a>
+        <a href="#contact" class="transition hover:text-brand-red">联系我们</a>
+      </nav>
+      <div class="hidden lg:block">
+        <a href="#contact" class="btn-red btn">咨询合作</a>
+      </div>
+
+      <!-- 移动端汉堡按钮 -->
+      <button id="menuBtn" class="inline-flex h-10 w-10 items-center justify-center rounded-md text-brand-blue-dark lg:hidden" aria-label="打开菜单" aria-expanded="false">
+        <svg id="menuIconOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="menuIconClose" xmlns="http://www.w3.org/2000/svg" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <!-- 移动端菜单 -->
+    <div id="mobileMenu" class="hidden border-t border-slate-100 bg-white px-5 pb-5 pt-2 lg:hidden">
+      <nav class="flex flex-col gap-1 text-sm font-medium text-slate-700" aria-label="移动端导航">
+        <a href="#home" class="rounded-md px-3 py-2.5 hover:bg-slate-50 hover:text-brand-red">首页</a>
+        <a href="#about" class="rounded-md px-3 py-2.5 hover:bg-slate-50 hover:text-brand-red">关于我们</a>
+        <a href="#services" class="rounded-md px-3 py-2.5 hover:bg-slate-50 hover:text-brand-red">核心业务</a>
+        <a href="#works" class="rounded-md px-3 py-2.5 hover:bg-slate-50 hover:text-brand-red">案例展示</a>
+        <a href="#process" class="rounded-md px-3 py-2.5 hover:bg-slate-50 hover:text-brand-red">服务流程</a>
+        <a href="#contact" class="rounded-md px-3 py-2.5 hover:bg-slate-50 hover:text-brand-red">联系我们</a>
+        <a href="#contact" class="btn-red btn mt-2">咨询合作</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================= 1. 首屏 Banner ======================= -->
+    <section id="home" class="relative overflow-hidden bg-gradient-to-br from-brand-blue-deep via-brand-blue-dark to-brand-blue pt-28 pb-20 md:pt-40 md:pb-28">
+      <!-- 装饰：金色光晕 + 细网格 + 抽象展厅剪影 -->
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute -top-32 right-[-10%] h-[480px] w-[480px] rounded-full bg-brand-gold/10 blur-3xl"></div>
+        <div class="absolute bottom-[-20%] left-[-5%] h-[420px] w-[420px] rounded-full bg-brand-gold/5 blur-3xl"></div>
+        <svg class="absolute inset-0 h-full w-full opacity-[0.07]" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
+              <path d="M 56 0 L 0 0 0 56" fill="none" stroke="#ffffff" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)"/>
+        </svg>
+        <!-- 抽象展厅柱廊剪影 -->
+        <svg class="absolute bottom-0 right-0 hidden h-[70%] w-[46%] opacity-[0.10] md:block" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 400V300H40V400M80 400V300H120V400M160 400V300H200V400M240 400V300H280V400M320 400V300H360V400M400 400V300H440V400M480 400V300H520V400M560 400V300H600V400" stroke="#ffffff" stroke-width="6"/>
+          <path d="M0 300H600" stroke="#ffffff" stroke-width="6"/>
+          <path d="M0 280H600" stroke="#ffffff" stroke-width="3"/>
+        </svg>
+      </div>
+
+      <div class="container-x relative">
+        <div class="reveal visible">
+          <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-medium tracking-widest text-white/90">
+            <span class="h-1.5 w-1.5 rounded-full bg-brand-gold"></span>
+            徐州贤片网络科技有限公司 · 数字文化视觉服务商
+          </p>
+          <h1 class="max-w-4xl text-4xl font-extrabold leading-tight tracking-tight text-white md:text-6xl md:leading-[1.15]">
+            以视觉赋能品牌<br />
+            为政企打造<span class="text-brand-gold">展厅 · 文化 · 数字网站</span>作品
+          </h1>
+          <p class="mt-6 max-w-2xl text-base leading-8 text-white/80 md:text-lg">
+            专注展厅设计、文化墙制作、视频拍摄与官网开发，为政企单位提供从策划、设计到落地的一站式数字文化视觉解决方案。
+          </p>
+          <div class="mt-9 flex flex-wrap items-center gap-4">
+            <a href="#contact" class="btn-gold btn">咨询合作</a>
+            <a href="#works" class="btn-ghost-light btn">查看案例</a>
+          </div>
+          <!-- 业务快捷条 -->
+          <div class="mt-12 flex flex-wrap gap-2.5">
+            <span class="rounded-md border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs text-white/85">展厅设计落地</span>
+            <span class="rounded-md border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs text-white/85">文化墙设计制作</span>
+            <span class="rounded-md border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs text-white/85">视频拍摄制作</span>
+            <span class="rounded-md border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs text-white/85">官网开发建设</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= 2. 关于我们 ======================= -->
+    <section id="about" class="scroll-mt-24 bg-slate-50 py-20 md:py-28">
+      <div class="container-x">
+        <div class="reveal max-w-3xl">
+          <p class="sec-tag">关于我们</p>
+          <h2 class="sec-title">一站式数字文化视觉解决方案服务商</h2>
+          <p class="sec-sub">
+            徐州贤片网络科技有限公司立足徐州，面向政企单位、企事业单位及各类中小企业，提供涵盖<strong class="font-semibold text-brand-blue-dark">展厅设计、文化墙制作、视频拍摄与企业官网开发</strong>的一体化数字文化视觉解决方案。
+          </p>
+          <p class="mt-4 max-w-2xl text-sm leading-7 text-brand-gray md:text-base">
+            我们坚持“策划先行、设计为本、落地为王”，把空间展示、视觉内容与数字门户统一起来，帮助客户打造专业、统一、有影响力的品牌文化形象。
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="reveal delay-100 rounded-xl border border-slate-100 bg-white p-6 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card-hover">
+            <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h16M6 20V9l6-5 6 5v11M10 20v-4h4v4"/></svg>
+            </div>
+            <h3 class="text-base font-bold text-brand-blue-dark">全流程服务</h3>
+            <p class="mt-2 text-sm leading-6 text-brand-gray">策划—设计—制作—落地—运维，一站式交付，省心省力。</p>
+          </div>
+          <div class="reveal delay-200 rounded-xl border border-slate-100 bg-white p-6 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card-hover">
+            <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.5 12l2 2 3.5-4"/></svg>
+            </div>
+            <h3 class="text-base font-bold text-brand-blue-dark">政企项目经验</h3>
+            <p class="mt-2 text-sm leading-6 text-brand-gray">熟悉政企文化场景与党建主题表达，风格稳重、表达合规。</p>
+          </div>
+          <div class="reveal delay-300 rounded-xl border border-slate-100 bg-white p-6 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card-hover">
+            <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-brand-gold/20 text-brand-gold-dark">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 0 0-3-3.87M9 20H4v-2a4 4 0 0 1 3-3.87M16 3.13a4 4 0 0 1 0 7.75M12 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"/></svg>
+            </div>
+            <h3 class="text-base font-bold text-brand-blue-dark">自有制作团队</h3>
+            <p class="mt-2 text-sm leading-6 text-brand-gray">设计、施工、拍摄、开发团队协同作业，品质可控。</p>
+          </div>
+          <div class="reveal delay-300 rounded-xl border border-slate-100 bg-white p-6 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card-hover">
+            <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18z"/></svg>
+            </div>
+            <h3 class="text-base font-bold text-brand-blue-dark">售后持续保障</h3>
+            <p class="mt-2 text-sm leading-6 text-brand-gray">交付不是终点，提供长期维护与内容迭代支持。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= 3. 核心业务 ======================= -->
+    <section id="services" class="scroll-mt-24 bg-white py-20 md:py-28">
+      <div class="container-x">
+        <div class="reveal max-w-3xl">
+          <p class="sec-tag">核心业务</p>
+          <h2 class="sec-title">四大核心业务，一站式交付</h2>
+          <p class="sec-sub">从线下空间到线上数字门户，围绕品牌文化视觉全场景提供服务。</p>
+        </div>
+
+        <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <!-- 展厅设计 -->
+          <div class="service-card reveal">
+            <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-brand-blue to-brand-blue-dark text-white shadow-lg shadow-brand-blue/25">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-5h6v5M12 4v2"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-brand-blue-dark">展厅设计</h3>
+            <p class="mt-3 text-sm leading-6 text-brand-gray">企业展厅、党建展厅、科普展厅的策划设计与整体落地，兼顾空间美学与参观动线。</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="rounded bg-slate-100 px-2.5 py-1 text-xs text-slate-600">企业展厅</span>
+              <span class="rounded bg-slate-100 px-2.5 py-1 text-xs text-slate-600">党建展厅</span>
+              <span class="rounded bg-slate-100 px-2.5 py-1 text-xs text-slate-600">科普展厅</span>
+            </div>
+          </div>
+          <!-- 文化墙 -->
+          <div class="service-card reveal delay-100">
+            <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red to-brand-red-dark text-white shadow-lg shadow-brand-red/25">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M3 15.5l4-4.5 3 3 4-5 7 7.5"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-brand-blue-dark">文化墙</h3>
+            <p class="mt-3 text-sm leading-6 text-brand-gray">企业文化墙、党建文化墙、走廊文化墙的设计与制作安装，让空间开口说话。</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="rounded bg-slate-100 px-2.5 py-1 text-xs text-slate-600">企业文化墙</span>
+              <span class="rounded bg-slate-100 px-2.5 py-1 text-xs text-slate-600">党建文化墙</span>
+              <span class="rounded bg-slate-100 px-2.5 py-1 text-xs text-slate-600">走廊文化墙</span>
+            </div>
+          </div>
+          <!-- 视频拍摄制作 -->
+          <div class="service-card reveal delay-200">
+            <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-slate-700 to-slate-900 text-white shadow-lg shadow-slate-700/25">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5l5-3v9l-5-3"/><circle cx="9" cy="12" r="1.6"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-brand-blue-dark">视频拍摄制作</h3>
+            <p class="mt-3 text-sm leading-6 text-brand-gray">企业宣传片、专题片、短视频的拍摄与后期制作，用镜头讲好品牌故事。</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="rounded bg-slate-100 px-2.5 py-1 text-xs text-slate-600">宣传片</span>
+              <span class="rounded bg-slate-100 px-2.5 py-1 text-xs text-slate-600">专题片</span>
+              <span class="rounded bg-slate-100 px-2.5 py-1 text-xs text-slate-600">短视频</span>
+            </div>
+          </div>
+          <!-- 官网开发 -->
+          <div class="service-card reveal delay-300">
+            <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-brand-gold to-brand-gold-dark text-brand-blue-dark shadow-lg shadow-brand-gold/30">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M8.5 21h7M12 17v4M9 9l-2 2.5L9 14M15 9l2 2.5L15 14"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-brand-blue-dark">官网开发</h3>
+            <p class="mt-3 text-sm leading-6 text-brand-gray">企业官网、展示型网站定制开发与上线，搭建品牌线上数字门户。</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="rounded bg-slate-100 px-2.5 py-1 text-xs text-slate-600">企业官网</span>
+              <span class="rounded bg-slate-100 px-2.5 py-1 text-xs text-slate-600">展示型网站</span>
+              <span class="rounded bg-slate-100 px-2.5 py-1 text-xs text-slate-600">响应式设计</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= 4. 案例展示 ======================= -->
+    <section id="works" class="scroll-mt-24 bg-slate-50 py-20 md:py-28">
+      <div class="container-x">
+        <div class="reveal max-w-3xl">
+          <p class="sec-tag">案例展示</p>
+          <h2 class="sec-title">代表性项目</h2>
+          <p class="sec-sub">覆盖展厅、文化墙、视频与官网四大类项目。部分案例资料整理中，欢迎垂询获取更完整的项目案例集。</p>
+        </div>
+
+        <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <!-- 展厅案例 -->
+          <a href="#contact" class="reveal group relative block overflow-hidden rounded-xl shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card-hover">
+            <div class="relative flex h-64 flex-col justify-between bg-gradient-to-br from-brand-blue to-brand-blue-deep p-6">
+              <div class="flex items-center justify-between">
+                <span class="rounded-full bg-white/15 px-3 py-1 text-xs font-medium text-white backdrop-blur">展厅 · 空间设计</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-5h6v5"/></svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-white">党建 / 企业展厅</h3>
+                <p class="mt-2 text-xs leading-5 text-white/70">企业展厅、党建展厅策划设计与落地<br />案例资料整理中，欢迎垂询</p>
+              </div>
+            </div>
+          </a>
+          <!-- 文化墙案例 -->
+          <a href="#contact" class="reveal delay-100 group relative block overflow-hidden rounded-xl shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card-hover">
+            <div class="relative flex h-64 flex-col justify-between bg-gradient-to-br from-brand-red to-[#7c0f0f] p-6">
+              <div class="flex items-center justify-between">
+                <span class="rounded-full bg-white/15 px-3 py-1 text-xs font-medium text-white backdrop-blur">文化墙 · 设计制作</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M3 15.5l4-4.5 3 3 4-5 7 7.5"/></svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-white">企业 / 党建文化墙</h3>
+                <p class="mt-2 text-xs leading-5 text-white/70">企业文化墙、党建文化墙设计制作安装<br />案例资料整理中，欢迎垂询</p>
+              </div>
+            </div>
+          </a>
+          <!-- 视频案例 -->
+          <a href="#contact" class="reveal delay-200 group relative block overflow-hidden rounded-xl shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card-hover">
+            <div class="relative flex h-64 flex-col justify-between bg-gradient-to-br from-slate-700 to-slate-950 p-6">
+              <div class="flex items-center justify-between">
+                <span class="rounded-full bg-white/15 px-3 py-1 text-xs font-medium text-white backdrop-blur">视频 · 拍摄制作</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5l5-3v9l-5-3"/></svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-white">企业宣传片 / 专题片</h3>
+                <p class="mt-2 text-xs leading-5 text-white/70">宣传片、专题片、短视频拍摄剪辑<br />案例资料整理中，欢迎垂询</p>
+              </div>
+            </div>
+          </a>
+          <!-- 官网案例 -->
+          <a href="#contact" class="reveal delay-300 group relative block overflow-hidden rounded-xl shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card-hover">
+            <div class="relative flex h-64 flex-col justify-between bg-gradient-to-br from-brand-gold via-amber-300 to-brand-gold-dark p-6">
+              <div class="flex items-center justify-between">
+                <span class="rounded-full bg-brand-blue-deep/80 px-3 py-1 text-xs font-medium text-white backdrop-blur">官网 · 定制开发</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-blue-deep/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M8.5 21h7M12 17v4M9 9l-2 2.5L9 14M15 9l2 2.5L15 14"/></svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-brand-blue-deep">企业官网定制开发</h3>
+                <p class="mt-2 text-xs leading-5 text-brand-blue-deep/80">企业官网、展示型网站开发上线<br />本网站即贤片官网开发能力展示</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= 5. 服务流程 ======================= -->
+    <section id="process" class="scroll-mt-24 bg-white py-20 md:py-28">
+      <div class="container-x">
+        <div class="reveal max-w-3xl">
+          <p class="sec-tag">服务流程</p>
+          <h2 class="sec-title">五步标准流程，全程透明可控</h2>
+          <p class="sec-sub">从需求沟通到售后维护，每个环节明确交付、定期同步，让客户全程心中有数。</p>
+        </div>
+
+        <div class="relative mt-16">
+          <!-- 连接线（桌面） -->
+          <div class="absolute left-0 right-0 top-6 hidden h-px bg-gradient-to-r from-brand-blue/10 via-brand-gold to-brand-red/10 lg:block" aria-hidden="true"></div>
+          <ol class="grid gap-10 lg:grid-cols-5 lg:gap-6">
+            <li class="reveal relative flex flex-col items-center text-center lg:px-2">
+              <div class="step-dot z-10">01</div>
+              <h3 class="mt-4 text-base font-bold text-brand-blue-dark">需求沟通</h3>
+              <p class="mt-2 text-sm leading-6 text-brand-gray">了解业务目标、应用场景与预算范围</p>
+            </li>
+            <li class="reveal delay-100 relative flex flex-col items-center text-center lg:px-2">
+              <div class="step-dot z-10">02</div>
+              <h3 class="mt-4 text-base font-bold text-brand-blue-dark">方案策划</h3>
+              <p class="mt-2 text-sm leading-6 text-brand-gray">概念创意、方案设计与报价确认</p>
+            </li>
+            <li class="reveal delay-200 relative flex flex-col items-center text-center lg:px-2">
+              <div class="step-dot z-10">03</div>
+              <h3 class="mt-4 text-base font-bold text-brand-blue-dark">设计制作</h3>
+              <p class="mt-2 text-sm leading-6 text-brand-gray">深化设计、制作施工 / 拍摄 / 开发</p>
+            </li>
+            <li class="reveal delay-200 relative flex flex-col items-center text-center lg:px-2">
+              <div class="step-dot z-10">04</div>
+              <h3 class="mt-4 text-base font-bold text-brand-blue-dark">落地交付</h3>
+              <p class="mt-2 text-sm leading-6 text-brand-gray">现场安装、调试上线、验收交付</p>
+            </li>
+            <li class="reveal delay-300 relative flex flex-col items-center text-center lg:px-2">
+              <div class="step-dot z-10">05</div>
+              <h3 class="mt-4 text-base font-bold text-brand-blue-dark">售后维护</h3>
+              <p class="mt-2 text-sm leading-6 text-brand-gray">持续运维与内容迭代支持</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= 6. 客户合作 ======================= -->
+    <section id="clients" class="scroll-mt-24 bg-gradient-to-br from-brand-blue-deep to-brand-blue-dark py-20 md:py-24">
+      <div class="container-x">
+        <div class="reveal mx-auto max-w-3xl text-center">
+          <p class="mb-3 inline-flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-brand-gold">
+            客户合作
+          </p>
+          <h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">服务政企 · 值得信赖</h2>
+          <p class="mt-5 text-sm leading-7 text-white/75 md:text-base">
+            长期服务于政企单位、企事业单位与各类中小企业，覆盖政府机关、国有企业、学校医院及民营企业的文化展示与数字建设需求。具体客户案例与合作名录，欢迎咨询了解。
+          </p>
+          <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
+            <span class="rounded-lg border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/90">政企单位</span>
+            <span class="rounded-lg border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/90">企事业单位</span>
+            <span class="rounded-lg border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/90">中小企业</span>
+            <span class="rounded-lg border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/90">政府机关</span>
+            <span class="rounded-lg border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/90">国有企业</span>
+            <span class="rounded-lg border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/90">学校医院</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= 7. 联系我们 ======================= -->
+    <section id="contact" class="scroll-mt-24 bg-slate-50 py-20 md:py-28">
+      <div class="container-x">
+        <div class="reveal max-w-3xl">
+          <p class="sec-tag">联系我们</p>
+          <h2 class="sec-title">开启您的项目</h2>
+          <p class="sec-sub">无论是展厅、文化墙、视频还是官网需求，告诉我们您的想法，我们将在一个工作日内与您联系。</p>
+        </div>
+
+        <div class="mt-14 grid gap-8 lg:grid-cols-5">
+          <!-- 联系信息 -->
+          <div class="reveal lg:col-span-2">
+            <div class="rounded-xl border border-slate-100 bg-white p-8 shadow-card">
+              <h3 class="text-lg font-bold text-brand-blue-dark">联系方式</h3>
+              <ul class="mt-6 space-y-5 text-sm">
+                <li class="flex items-start gap-4">
+                  <span class="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5.5A2.5 2.5 0 0 1 5.5 3h1.6a1 1 0 0 1 .98.8l.8 3.2a1 1 0 0 1-.45 1.07l-1.7 1.05a13.5 13.5 0 0 0 6.22 6.22l1.05-1.7a1 1 0 0 1 1.07-.45l3.2.8a1 1 0 0 1 .8.98v1.6A2.5 2.5 0 0 1 18.5 19C10.94 19 5 13.06 5 5.5z"/></svg>
+                  </span>
+                  <div>
+                    <p class="text-xs text-brand-gray">联系电话</p>
+                    <a href="tel:+8618151818627" class="mt-1 block text-base font-semibold text-brand-blue-dark hover:text-brand-red">181-5181-8627</a>
+                  </div>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5h18v14H3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M3 6.5l9 7 9-7"/></svg>
+                  </span>
+                  <div>
+                    <p class="text-xs text-brand-gray">电子邮箱</p>
+                    <a href="mailto:info@xianpian-tech.com" class="mt-1 block text-base font-semibold text-brand-blue-dark hover:text-brand-red">info@xianpian-tech.com</a>
+                  </div>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-gold/20 text-brand-gold-dark">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-5.3-7-11a7 7 0 1 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+                  </span>
+                  <div>
+                    <p class="text-xs text-brand-gray">公司地址</p>
+                    <p class="mt-1 text-base font-semibold text-brand-blue-dark">江苏省徐州市</p>
+                    <p class="mt-0.5 text-xs text-brand-gray">（详细地址补充中）</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3.5 2"/></svg>
+                  </span>
+                  <div>
+                    <p class="text-xs text-brand-gray">工作时间</p>
+                    <p class="mt-1 text-base font-semibold text-brand-blue-dark">周一至周六 8:30 – 18:00</p>
+                  </div>
+                </li>
+              </ul>
+              <a href="tel:+8618151818627" class="btn-red btn mt-8 w-full">电话咨询</a>
+            </div>
+          </div>
+
+          <!-- 留言表单 -->
+          <div class="reveal delay-100 lg:col-span-3">
+            <form id="contactForm" class="rounded-xl border border-slate-100 bg-white p-8 shadow-card" novalidate>
+              <h3 class="text-lg font-bold text-brand-blue-dark">在线留言</h3>
+              <div class="mt-6 grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label for="fName" class="mb-1.5 block text-sm font-medium text-slate-700">您的称呼 <span class="text-brand-red">*</span></label>
+                  <input id="fName" name="name" type="text" required placeholder="如何称呼您" class="w-full rounded-md border border-slate-200 px-4 py-2.5 text-sm outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/15" />
+                </div>
+                <div>
+                  <label for="fPhone" class="mb-1.5 block text-sm font-medium text-slate-700">联系电话 <span class="text-brand-red">*</span></label>
+                  <input id="fPhone" name="phone" type="tel" required placeholder="方便我们联系您" class="w-full rounded-md border border-slate-200 px-4 py-2.5 text-sm outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/15" />
+                </div>
+                <div>
+                  <label for="fCompany" class="mb-1.5 block text-sm font-medium text-slate-700">公司名称</label>
+                  <input id="fCompany" name="company" type="text" placeholder="选填" class="w-full rounded-md border border-slate-200 px-4 py-2.5 text-sm outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/15" />
+                </div>
+                <div>
+                  <label for="fService" class="mb-1.5 block text-sm font-medium text-slate-700">合作需求</label>
+                  <select id="fService" name="service" class="w-full rounded-md border border-slate-200 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/15">
+                    <option value="展厅设计">展厅设计</option>
+                    <option value="文化墙制作">文化墙制作</option>
+                    <option value="视频拍摄制作">视频拍摄制作</option>
+                    <option value="官网开发">官网开发</option>
+                    <option value="其他">其他 / 综合需求</option>
+                  </select>
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="fMsg" class="mb-1.5 block text-sm font-medium text-slate-700">需求描述</label>
+                  <textarea id="fMsg" name="message" rows="4" placeholder="简单描述您的项目情况，如场地面积、期望效果、时间节点等" class="w-full resize-none rounded-md border border-slate-200 px-4 py-2.5 text-sm outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/15"></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn-red btn mt-6 w-full sm:w-auto sm:px-10">提交需求</button>
+              <p class="mt-4 text-xs leading-5 text-brand-gray">提交后我们将尽快与您联系。* 当前为官网演示版本，正式上线可接入邮件 / 表单服务接收询盘。</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================= 8. 页脚 ======================= -->
+  <footer class="bg-brand-blue-deep text-white">
+    <div class="container-x py-14">
+      <div class="grid gap-10 md:grid-cols-3">
+        <div>
+          <a href="#home" class="inline-flex" aria-label="返回首页">
+            <svg viewBox="0 0 360 84" class="h-10 w-auto" role="img" aria-label="XIANPIAN 贤片">
+              <text x="0" y="59" font-family="Arial,Helvetica,sans-serif" font-size="54" font-weight="800" letter-spacing="3" fill="#ffffff">XIAN</text>
+              <rect x="185" y="8" width="175" height="68" rx="12" fill="#ab1818"/>
+              <text x="272.5" y="59" font-family="Arial,Helvetica,sans-serif" font-size="54" font-weight="800" letter-spacing="3" text-anchor="middle" fill="#ffffff">PIAN</text>
+            </svg>
+          </a>
+          <p class="mt-5 max-w-xs text-sm leading-7 text-white/65">
+            以视觉赋能品牌，为政企打造展厅、文化、数字网站作品。一站式数字文化视觉解决方案服务商。
+          </p>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold tracking-widest text-brand-gold">网站导航</h3>
+          <ul class="mt-5 grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-white/75">
+            <li><a href="#about" class="transition hover:text-white">关于我们</a></li>
+            <li><a href="#services" class="transition hover:text-white">核心业务</a></li>
+            <li><a href="#works" class="transition hover:text-white">案例展示</a></li>
+            <li><a href="#process" class="transition hover:text-white">服务流程</a></li>
+            <li><a href="#clients" class="transition hover:text-white">客户合作</a></li>
+            <li><a href="#contact" class="transition hover:text-white">联系我们</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold tracking-widest text-brand-gold">核心业务</h3>
+          <ul class="mt-5 space-y-3 text-sm text-white/75">
+            <li>展厅设计 · 企业 / 党建 / 科普展厅</li>
+            <li>文化墙 · 企业 / 党建 / 走廊文化墙</li>
+            <li>视频拍摄 · 宣传片 / 专题片 / 短视频</li>
+            <li>官网开发 · 企业官网 / 展示型网站</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/10">
+      <div class="container-x flex flex-col items-center justify-between gap-2 py-5 text-xs text-white/50 md:flex-row">
+        <p>© <span id="year">2026</span> 徐州贤片网络科技有限公司 版权所有</p>
+        <p>XUZHOU XIANPIAN NETWORK TECHNOLOGY CO., LTD.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 提交提示 -->
+  <div id="toast" class="pointer-events-none fixed bottom-8 left-1/2 z-[60] -translate-x-1/2 translate-y-4 rounded-lg bg-brand-blue-deep px-5 py-3.5 text-sm font-medium text-white opacity-0 shadow-2xl transition duration-300">
+    <span class="mr-2 inline-block h-2 w-2 rounded-full bg-brand-gold"></span>
+    <span id="toastText">提交成功，我们将在1个工作日内与您联系！</span>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      /* 1. 滚动进入动画 */
+      var revealEls = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+        );
+        revealEls.forEach(function (el) { io.observe(el); });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add("visible"); });
+      }
+
+      /* 2. 顶部导航滚动阴影 */
+      var header = document.getElementById("siteHeader");
+      function onScroll() {
+        if (window.scrollY > 8) {
+          header.classList.add("shadow-md");
+        } else {
+          header.classList.remove("shadow-md");
+        }
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      /* 3. 移动端菜单 */
+      var menuBtn = document.getElementById("menuBtn");
+      var mobileMenu = document.getElementById("mobileMenu");
+      var iconOpen = document.getElementById("menuIconOpen");
+      var iconClose = document.getElementById("menuIconClose");
+      menuBtn.addEventListener("click", function () {
+        var isOpen = mobileMenu.classList.toggle("hidden");
+        iconOpen.classList.toggle("hidden", !isOpen);
+        iconClose.classList.toggle("hidden", isOpen);
+        menuBtn.setAttribute("aria-expanded", String(!isOpen));
+      });
+      mobileMenu.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          mobileMenu.classList.add("hidden");
+          iconOpen.classList.remove("hidden");
+          iconClose.classList.add("hidden");
+          menuBtn.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      /* 4. 表单提交（前端演示：校验 + 提示） */
+      var form = document.getElementById("contactForm");
+      var toast = document.getElementById("toast");
+      var toastText = document.getElementById("toastText");
+      var toastTimer = null;
+      function showToast(msg) {
+        toastText.textContent = msg;
+        toast.classList.remove("opacity-0", "translate-y-4");
+        toast.classList.add("opacity-100", "translate-y-0");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          toast.classList.add("opacity-0", "translate-y-4");
+          toast.classList.remove("opacity-100", "translate-y-0");
+        }, 3200);
+      }
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var name = document.getElementById("fName").value.trim();
+        var phone = document.getElementById("fPhone").value.trim();
+        if (!name) { showToast("请填写您的称呼"); return; }
+        if (!phone) { showToast("请填写联系电话"); return; }
+        showToast("提交成功！我们将在1个工作日内与您联系");
+        form.reset();
+      });
+
+      /* 5. 页脚年份 */
+      document.getElementById("year").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
