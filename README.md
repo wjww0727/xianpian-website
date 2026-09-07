@@ -6,7 +6,7 @@
 
 ## 在线地址
 
-- 线上演示（Vercel）：`待部署后填写`
+- 线上演示（Vercel）：https://xianpian-website.vercel.app
 - GitHub 仓库：https://github.com/wjww0727/xianpian-website
 
 ## 项目结构
@@ -22,6 +22,7 @@
 │       └── logo-原图.png   # 公司logo原图（PNG，来自微信）
 ├── tailwind.config.js      # 品牌色等配置
 ├── vercel.json             # Vercel 静态部署配置
+├── sitemap.xml             # 站点地图
 ├── robots.txt
 └── README.md
 ```
