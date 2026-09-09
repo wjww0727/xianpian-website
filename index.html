@@ -1097,7 +1097,7 @@
     })();
   </script>
   <script>
-    /* Glitter Warp：金色闪光粒子随波浪流动（仅客户合作板块；不挡点击） */
+    /* Glitter Warp：星战曲速隧道（粒子从中心由内向外飞驰，带拖尾闪光；仅客户合作板块） */
     (function () {
       var canvas = document.getElementById("glitterWarp");
       if (!canvas) return;
@@ -1105,11 +1105,30 @@
       var ctx = canvas.getContext("2d");
       var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      var W = 0, H = 0, dpr = 1;
+      var W = 0, H = 0, dpr = 1, cx = 0, cy = 0;
       var particles = [];
-      var COUNT = window.innerWidth < 768 ? 50 : 90;
-      var COLORS = ["#ffd900", "#ffe97a", "#ffffff", "#c9d6ff"];
+      var COUNT = window.innerWidth < 768 ? 90 : 160;
+      var FOCAL = 260;
+      var MAXZ = 1400;
+      var COLORS = ["#ffffff", "#ffe97a", "#ffd900", "#c9d6ff"];
 
+      function spawn(deep) {
+        return {
+          x: (Math.random() - 0.5) * 360,   // 方向坐标（屏幕像素级）
+          y: (Math.random() - 0.5) * 360,
+          z: deep ? Math.random() * MAXZ + 60 : MAXZ,
+          pz: 0,
+          speed: 3 + Math.random() * 6,
+          size: 1 + Math.random() * 1.8,
+          color: COLORS[Math.floor(Math.random() * COLORS.length)]
+        };
+      }
+      function project(p, z) {
+        return {
+          x: cx + (p.x / z) * FOCAL,
+          y: cy + (p.y / z) * FOCAL
+        };
+      }
       function resize() {
         var rect = section.getBoundingClientRect();
         dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -1117,48 +1136,46 @@
         canvas.width = Math.round(W * dpr);
         canvas.height = Math.round(H * dpr);
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        build();
-      }
-      function build() {
+        cx = W / 2; cy = H / 2;
         particles = [];
-        for (var i = 0; i < COUNT; i++) {
-          particles.push({
-            x: Math.random() * W,
-            baseY: Math.random() * H,
-            size: 0.8 + Math.random() * 1.8,
-            color: COLORS[Math.floor(Math.random() * COLORS.length)],
-            phase: Math.random() * Math.PI * 2,
-            twinkle: 0.8 + Math.random() * 1.8,
-            drift: (Math.random() - 0.5) * 0.15,
-            waveAmp: 12 + Math.random() * 22,
-            waveFreq: 0.002 + Math.random() * 0.003
-          });
-        }
+        for (var i = 0; i < COUNT; i++) particles.push(spawn(true));
       }
 
-      var t = 0;
       function tick() {
-        t += 0.016;
-        ctx.clearRect(0, 0, W, H);
+        // 拖尾：半透明深蓝覆盖
+        ctx.fillStyle = "rgba(12,22,60,0.30)";
+        ctx.fillRect(0, 0, W, H);
+
         for (var i = 0; i < particles.length; i++) {
           var p = particles[i];
-          p.x += p.drift;
-          if (p.x < -10) p.x = W + 10;
-          if (p.x > W + 10) p.x = -10;
-          var y = p.baseY + Math.sin(p.x * p.waveFreq + t * 0.8 + p.phase) * p.waveAmp;
-          var alpha = 0.25 + 0.75 * (0.5 + 0.5 * Math.sin(t * p.twinkle + p.phase));
+          p.pz = p.z;
+          p.z -= p.speed * 7;
+          if (p.z < 40) {
+            particles[i] = spawn(false);
+            continue;
+          }
+          var cur = project(p, p.z);
+          var prev = project(p, p.pz);
+          var depth = 1 - p.z / MAXZ;            // 0 远 -> 1 近
+          var alpha = Math.max(0.05, Math.min(1, depth));
+          var r = p.size * (0.3 + depth * 1.8);
+
+          // 拖尾线
+          ctx.strokeStyle = p.color;
+          ctx.globalAlpha = alpha * 0.85;
+          ctx.lineWidth = r;
+          ctx.lineCap = "round";
+          ctx.beginPath();
+          ctx.moveTo(prev.x, prev.y);
+          ctx.lineTo(cur.x, cur.y);
+          ctx.stroke();
+
+          // 头部亮点
           ctx.globalAlpha = alpha;
           ctx.fillStyle = p.color;
           ctx.beginPath();
-          ctx.arc(p.x, y, p.size, 0, Math.PI * 2);
+          ctx.arc(cur.x, cur.y, r * 0.7, 0, Math.PI * 2);
           ctx.fill();
-          // 大粒子加微光
-          if (p.size > 1.8) {
-            ctx.globalAlpha = alpha * 0.25;
-            ctx.beginPath();
-            ctx.arc(p.x, y, p.size * 3.5, 0, Math.PI * 2);
-            ctx.fill();
-          }
         }
         ctx.globalAlpha = 1;
         if (!reduce) requestAnimationFrame(tick);
