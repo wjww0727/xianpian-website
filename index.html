@@ -965,5 +965,40 @@
       });
     })();
   </script>
+  <script>
+    /* Parallax Carousel 鼠标视差轮播（仅关于我们4张优势卡；中间稳、两端反向，触屏自动关闭） */
+    (function () {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var noHover = window.matchMedia && window.matchMedia('(hover: none)').matches;
+      if (reduce || noHover) return;
+      var wrap = document.querySelector('#about .mt-14.grid');
+      if (!wrap) return;
+      var cards = Array.prototype.slice.call(wrap.children);
+      var N = cards.length;
+      var MAX = 26; // 两端最大横向位移 px
+      cards.forEach(function (c) {
+        c.style.transition = 'transform 0.4s cubic-bezier(.2,.7,.3,1), box-shadow 0.3s ease';
+      });
+      wrap.style.perspective = '1000px';
+      wrap.addEventListener('mousemove', function (e) {
+        var r = wrap.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5; // -0.5 ~ 0.5
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        cards.forEach(function (c, i) {
+          var depth = i - (N - 1) / 2; // -1.5, -0.5, 0.5, 1.5
+          var dir = depth >= 0 ? 1 : -1;
+          var strength = 1 + Math.abs(depth) * 0.5;
+          var tx = px * MAX * strength * dir;
+          var ty = py * 12;
+          var ry = px * 5 * dir;
+          var rz = px * 1.5 * dir;
+          c.style.transform = 'translate3d(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px,0) rotateY(' + ry.toFixed(2) + 'deg) rotateZ(' + rz.toFixed(2) + 'deg)';
+        });
+      });
+      wrap.addEventListener('mouseleave', function () {
+        cards.forEach(function (c) { c.style.transform = ''; });
+      });
+    })();
+  </script>
 </body>
 </html>
