@@ -11,6 +11,124 @@
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='12' fill='%23ab1818'/%3E%3Ctext x='32' y='44' font-family='Arial,Helvetica,sans-serif' font-size='34' font-weight='800' fill='%23ffffff' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* ===== 案例手风琴画廊（仅 #caseGallery 区域；颜色沿用网站品牌色） ===== */
+    #caseGallery.ag-gallery {
+      --ag-accent: #2a46a1;
+      --ag-overlay: #0a1536;
+      --ag-text: #ffffff;
+      --ag-gap: 10px;
+      --ag-radius: 14px;
+      --ag-media-size: 320px;
+      display: flex;
+      flex-direction: row;
+      gap: var(--ag-gap);
+      width: 100%;
+      max-width: 100%;
+      margin-top: 3.5rem;
+      perspective: 1400px;
+      perspective-origin: 50% 50%;
+    }
+    #caseGallery .ag-panel {
+      position: relative;
+      flex: 1 1 0;
+      min-width: 0;
+      min-height: 0;
+      height: 460px;
+      overflow: hidden;
+      border-radius: var(--ag-radius);
+      cursor: pointer;
+      display: block;
+      text-decoration: none;
+      outline: none;
+      transform-style: preserve-3d;
+      transform-origin: center center;
+      background: #0a0713;
+      box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.8);
+      will-change: flex-grow, transform;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #caseGallery .ag-panel:focus-visible {
+      box-shadow: 0 0 0 2px var(--ag-accent), 0 10px 30px -18px rgba(0, 0, 0, 0.8);
+    }
+    #caseGallery .ag-panel__frame {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border-radius: inherit;
+    }
+    #caseGallery .ag-panel__media {
+      --ag-gray: 1;
+      --ag-dim: 0.35;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: var(--ag-media-size);
+      height: 100%;
+      filter: grayscale(var(--ag-gray));
+      will-change: transform, filter;
+    }
+    #caseGallery .ag-panel__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    #caseGallery .ag-panel__overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, transparent 45%, color-mix(in srgb, var(--ag-overlay) 78%, transparent) 100%),
+        color-mix(in srgb, var(--ag-overlay) calc(var(--ag-dim, 0.35) * 100%), transparent);
+    }
+    #caseGallery .ag-panel__label {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      right: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    #caseGallery .ag-panel__bar {
+      flex: 0 0 auto;
+      width: 3px;
+      height: 26px;
+      border-radius: 3px;
+      background: var(--ag-accent);
+      opacity: 0;
+      box-shadow: 0 0 12px color-mix(in srgb, var(--ag-accent) 60%, transparent);
+    }
+    #caseGallery .ag-panel__text {
+      color: var(--ag-text);
+      font-family: inherit;
+      font-weight: 600;
+      font-size: clamp(1rem, 1.4vw, 1.4rem);
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      opacity: 0;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+    }
+    @media (max-width: 640px) {
+      #caseGallery.ag-gallery {
+        overflow-x: auto;
+        perspective: none;
+        padding-bottom: 6px;
+        -webkit-overflow-scrolling: touch;
+      }
+      #caseGallery .ag-panel {
+        min-width: 84px;
+        height: 320px;
+      }
+    }
+  </style>
 </head>
 
 <body class="bg-white">
@@ -229,60 +347,68 @@
           <p class="sec-sub">覆盖展厅、文化墙、视频与官网四大类项目。部分案例资料整理中，欢迎垂询获取更完整的项目案例集。</p>
         </div>
 
-        <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <!-- 展厅案例 -->
-          <a href="#contact" class="reveal group relative block overflow-hidden rounded-xl shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card-hover">
-            <div class="relative flex h-64 flex-col justify-between bg-gradient-to-br from-brand-blue to-brand-blue-deep p-6">
-              <div class="flex items-center justify-between">
-                <span class="rounded-full bg-white/15 px-3 py-1 text-xs font-medium text-white backdrop-blur">展厅 · 空间设计</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-5h6v5"/></svg>
-              </div>
-              <div>
-                <h3 class="text-lg font-bold text-white">党建 / 企业展厅</h3>
-                <p class="mt-2 text-xs leading-5 text-white/70">企业展厅、党建展厅策划设计与落地<br />案例资料整理中，欢迎垂询</p>
-              </div>
-            </div>
+        <div id="caseGallery" class="ag-gallery" role="list" aria-label="案例作品画廊">
+          <a class="ag-panel" href="#contact" role="listitem" tabindex="0" aria-label="党建展厅案例">
+            <span class="ag-panel__frame">
+              <span class="ag-panel__media"><img src="assets/img/cases/case-1-dangjian.svg" alt="党建展厅案例" draggable="false" /></span>
+              <span class="ag-panel__overlay" aria-hidden="true"></span>
+            </span>
+            <span class="ag-panel__label" aria-hidden="true">
+              <span class="ag-panel__bar"></span>
+              <span class="ag-panel__text">党建展厅</span>
+            </span>
           </a>
-          <!-- 文化墙案例 -->
-          <a href="#contact" class="reveal delay-100 group relative block overflow-hidden rounded-xl shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card-hover">
-            <div class="relative flex h-64 flex-col justify-between bg-gradient-to-br from-brand-red to-[#7c0f0f] p-6">
-              <div class="flex items-center justify-between">
-                <span class="rounded-full bg-white/15 px-3 py-1 text-xs font-medium text-white backdrop-blur">文化墙 · 设计制作</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M3 15.5l4-4.5 3 3 4-5 7 7.5"/></svg>
-              </div>
-              <div>
-                <h3 class="text-lg font-bold text-white">企业 / 党建文化墙</h3>
-                <p class="mt-2 text-xs leading-5 text-white/70">企业文化墙、党建文化墙设计制作安装<br />案例资料整理中，欢迎垂询</p>
-              </div>
-            </div>
+          <a class="ag-panel" href="#contact" role="listitem" tabindex="0" aria-label="企业展厅案例">
+            <span class="ag-panel__frame">
+              <span class="ag-panel__media"><img src="assets/img/cases/case-2-enterprise.svg" alt="企业展厅案例" draggable="false" /></span>
+              <span class="ag-panel__overlay" aria-hidden="true"></span>
+            </span>
+            <span class="ag-panel__label" aria-hidden="true">
+              <span class="ag-panel__bar"></span>
+              <span class="ag-panel__text">企业展厅</span>
+            </span>
           </a>
-          <!-- 视频案例 -->
-          <a href="#contact" class="reveal delay-200 group relative block overflow-hidden rounded-xl shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card-hover">
-            <div class="relative flex h-64 flex-col justify-between bg-gradient-to-br from-slate-700 to-slate-950 p-6">
-              <div class="flex items-center justify-between">
-                <span class="rounded-full bg-white/15 px-3 py-1 text-xs font-medium text-white backdrop-blur">视频 · 拍摄制作</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5l5-3v9l-5-3"/></svg>
-              </div>
-              <div>
-                <h3 class="text-lg font-bold text-white">企业宣传片 / 专题片</h3>
-                <p class="mt-2 text-xs leading-5 text-white/70">宣传片、专题片、短视频拍摄剪辑<br />案例资料整理中，欢迎垂询</p>
-              </div>
-            </div>
+          <a class="ag-panel" href="#contact" role="listitem" tabindex="0" aria-label="企业文化墙案例">
+            <span class="ag-panel__frame">
+              <span class="ag-panel__media"><img src="assets/img/cases/case-3-culture.svg" alt="企业文化墙案例" draggable="false" /></span>
+              <span class="ag-panel__overlay" aria-hidden="true"></span>
+            </span>
+            <span class="ag-panel__label" aria-hidden="true">
+              <span class="ag-panel__bar"></span>
+              <span class="ag-panel__text">企业文化墙</span>
+            </span>
           </a>
-          <!-- 官网案例 -->
-          <a href="#contact" class="reveal delay-300 group relative block overflow-hidden rounded-xl shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card-hover">
-            <div class="relative flex h-64 flex-col justify-between bg-gradient-to-br from-brand-gold via-amber-300 to-brand-gold-dark p-6">
-              <div class="flex items-center justify-between">
-                <span class="rounded-full bg-brand-blue-deep/80 px-3 py-1 text-xs font-medium text-white backdrop-blur">官网 · 定制开发</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-blue-deep/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M8.5 21h7M12 17v4M9 9l-2 2.5L9 14M15 9l2 2.5L15 14"/></svg>
-              </div>
-              <div>
-                <h3 class="text-lg font-bold text-brand-blue-deep">企业官网定制开发</h3>
-                <p class="mt-2 text-xs leading-5 text-brand-blue-deep/80">企业官网、展示型网站开发上线<br />本网站即贤片官网开发能力展示</p>
-              </div>
-            </div>
+          <a class="ag-panel" href="#contact" role="listitem" tabindex="0" aria-label="党建文化墙案例">
+            <span class="ag-panel__frame">
+              <span class="ag-panel__media"><img src="assets/img/cases/case-4-partywall.svg" alt="党建文化墙案例" draggable="false" /></span>
+              <span class="ag-panel__overlay" aria-hidden="true"></span>
+            </span>
+            <span class="ag-panel__label" aria-hidden="true">
+              <span class="ag-panel__bar"></span>
+              <span class="ag-panel__text">党建文化墙</span>
+            </span>
           </a>
-        </div>
+          <a class="ag-panel" href="#contact" role="listitem" tabindex="0" aria-label="宣传片拍摄案例">
+            <span class="ag-panel__frame">
+              <span class="ag-panel__media"><img src="assets/img/cases/case-5-video.svg" alt="宣传片拍摄案例" draggable="false" /></span>
+              <span class="ag-panel__overlay" aria-hidden="true"></span>
+            </span>
+            <span class="ag-panel__label" aria-hidden="true">
+              <span class="ag-panel__bar"></span>
+              <span class="ag-panel__text">宣传片拍摄</span>
+            </span>
+          </a>
+          <a class="ag-panel" href="#contact" role="listitem" tabindex="0" aria-label="官网开发案例">
+            <span class="ag-panel__frame">
+              <span class="ag-panel__media"><img src="assets/img/cases/case-6-website.svg" alt="官网开发案例" draggable="false" /></span>
+              <span class="ag-panel__overlay" aria-hidden="true"></span>
+            </span>
+            <span class="ag-panel__label" aria-hidden="true">
+              <span class="ag-panel__bar"></span>
+              <span class="ag-panel__text">官网开发</span>
+            </span>
+          </a>
+        </div>        </div>
       </div>
     </section>
 
@@ -579,6 +705,95 @@
 
       /* 5. 页脚年份 */
       document.getElementById("year").textContent = new Date().getFullYear();
+    })();
+    <script src="assets/js/gsap.min.js"></script>
+  <script>
+    /* 案例手风琴画廊（GSAP，颜色沿用品牌色；替换 assets/img/cases/ 下图片即可更新案例） */
+    (function () {
+      var gallery = document.getElementById("caseGallery");
+      if (!gallery || typeof gsap === "undefined") return;
+      var panels = Array.prototype.slice.call(gallery.querySelectorAll(".ag-panel"));
+      var mediaEls = panels.map(function (p) { return p.querySelector(".ag-panel__media"); });
+      var barEls = panels.map(function (p) { return p.querySelector(".ag-panel__bar"); });
+      var textEls = panels.map(function (p) { return p.querySelector(".ag-panel__text"); });
+      var count = panels.length;
+      var active = Math.min(Math.max(2, 0), count - 1);
+      var expandRatio = 0.52, tilt = 8, parallax = 0.5, stagger = 0.06, duration = 0.6;
+      var ease = "power3.out";
+      var mediaSize = 320;
+      var tl = null;
+      var firstRun = true;
+      var prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function applyLayout(animate) {
+        if (!panels.length) return;
+        var r = Math.min(Math.max(expandRatio, 0.2), 0.9);
+        var grow = count > 1 ? (r * (count - 1)) / (1 - r) : 1;
+        if (tl) tl.kill();
+        var dur = animate && !prefersReduced ? duration : 0;
+        var t = gsap.timeline();
+        panels.forEach(function (panel, i) {
+          if (!panel) return;
+          var isActive = i === active;
+          var media = mediaEls[i], bar = barEls[i], text = textEls[i];
+          var rot = isActive ? 0 : i < active ? tilt : -tilt;
+          t.to(panel, { flexGrow: isActive ? grow : 1, rotateY: rot, duration: dur, ease: ease }, 0);
+          if (media) {
+            var drift = Math.max(-1.5, Math.min(1.5, active - i));
+            var shift = drift * parallax * mediaSize * 0.06;
+            t.to(media, {
+              xPercent: -50, yPercent: -50,
+              x: isActive ? 0 : shift,
+              "--ag-gray": isActive ? 0 : 1,
+              "--ag-dim": isActive ? 0 : 0.35,
+              duration: dur, ease: ease
+            }, 0);
+          }
+          if (bar && text) {
+            if (isActive) {
+              t.to([bar, text], { opacity: 1, x: 0, duration: dur, ease: ease, stagger: prefersReduced ? 0 : stagger }, 0);
+            } else {
+              t.to([bar, text], { opacity: 0, x: -14, duration: dur * 0.6, ease: ease }, 0);
+            }
+          }
+        });
+        tl = t;
+      }
+
+      function measure() {
+        var rect = gallery.getBoundingClientRect();
+        var usable = Math.max(rect.width - 10 * (count - 1), 120);
+        mediaSize = Math.max(140, usable * Math.min(Math.max(expandRatio, 0.2), 0.9) * 1.22);
+        gallery.style.setProperty("--ag-media-size", mediaSize + "px");
+        applyLayout(!firstRun);
+        firstRun = false;
+      }
+
+      panels.forEach(function (panel, i) {
+        panel.addEventListener("mouseenter", function () {
+          if (active !== i) { active = i; applyLayout(true); }
+        });
+        panel.addEventListener("click", function (e) {
+          if (i !== active) { e.preventDefault(); active = i; applyLayout(true); }
+        });
+        panel.addEventListener("focus", function () {
+          if (active !== i) { active = i; applyLayout(true); }
+        });
+        panel.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+            e.preventDefault(); active = (i + 1) % count; applyLayout(true);
+          } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+            e.preventDefault(); active = (i - 1 + count) % count; applyLayout(true);
+          }
+        });
+      });
+
+      measure();
+      window.addEventListener("resize", measure);
+      if (window.ResizeObserver) {
+        var ro = new ResizeObserver(measure);
+        ro.observe(gallery);
+      }
     })();
   </script>
 </body>
