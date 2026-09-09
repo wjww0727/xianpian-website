@@ -12,8 +12,6 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='12' fill='%23ab1818'/%3E%3Ctext x='32' y='44' font-family='Arial,Helvetica,sans-serif' font-size='34' font-weight='800' fill='%23ffffff' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <style>
-    /* ===== Glitter Warp 金色闪光粒子（#clients 深蓝背景） ===== */
-    #clients { contain: layout paint; }
     /* ===== 服务流程线滚动动效（#process 5步节点） ===== */
     .process-line {
       background: linear-gradient(to right, rgba(42,70,161,0.15), rgba(255,217,0,0.55), rgba(171,24,24,0.15));
@@ -570,9 +568,8 @@
     </section>
 
     <!-- ======================= 6. 客户合作 ======================= -->
-    <section id="clients" class="relative scroll-mt-24 overflow-hidden bg-gradient-to-br from-brand-blue-deep to-brand-blue-dark py-20 md:py-24">
-      <canvas id="glitterWarp" class="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true"></canvas>
-      <div class="container-x relative z-10">
+    <section id="clients" class="scroll-mt-24 bg-gradient-to-br from-brand-blue-deep to-brand-blue-dark py-20 md:py-24">
+      <div class="container-x">
         <div class="reveal mx-auto max-w-3xl text-center">
           <p class="mb-3 inline-flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-brand-gold">
             客户合作
@@ -1094,96 +1091,6 @@
       } else {
         activate();
       }
-    })();
-  </script>
-  <script>
-    /* Glitter Warp：星战曲速隧道（粒子从中心由内向外飞驰，带拖尾闪光；仅客户合作板块） */
-    (function () {
-      var canvas = document.getElementById("glitterWarp");
-      if (!canvas) return;
-      var section = canvas.closest("#clients");
-      var ctx = canvas.getContext("2d");
-      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-      var W = 0, H = 0, dpr = 1, cx = 0, cy = 0;
-      var particles = [];
-      var COUNT = window.innerWidth < 768 ? 90 : 160;
-      var FOCAL = 260;
-      var MAXZ = 1400;
-      var COLORS = ["#ffffff", "#ffe97a", "#ffd900", "#c9d6ff"];
-
-      function spawn(deep) {
-        return {
-          x: (Math.random() - 0.5) * 360,   // 方向坐标（屏幕像素级）
-          y: (Math.random() - 0.5) * 360,
-          z: deep ? Math.random() * MAXZ + 60 : MAXZ,
-          pz: 0,
-          speed: 3 + Math.random() * 6,
-          size: 1 + Math.random() * 1.8,
-          color: COLORS[Math.floor(Math.random() * COLORS.length)]
-        };
-      }
-      function project(p, z) {
-        return {
-          x: cx + (p.x / z) * FOCAL,
-          y: cy + (p.y / z) * FOCAL
-        };
-      }
-      function resize() {
-        var rect = section.getBoundingClientRect();
-        dpr = Math.min(window.devicePixelRatio || 1, 2);
-        W = rect.width; H = rect.height;
-        canvas.width = Math.round(W * dpr);
-        canvas.height = Math.round(H * dpr);
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        cx = W / 2; cy = H / 2;
-        particles = [];
-        for (var i = 0; i < COUNT; i++) particles.push(spawn(true));
-      }
-
-      function tick() {
-        // 拖尾：半透明深蓝覆盖
-        ctx.fillStyle = "rgba(12,22,60,0.30)";
-        ctx.fillRect(0, 0, W, H);
-
-        for (var i = 0; i < particles.length; i++) {
-          var p = particles[i];
-          p.pz = p.z;
-          p.z -= p.speed * 7;
-          if (p.z < 40) {
-            particles[i] = spawn(false);
-            continue;
-          }
-          var cur = project(p, p.z);
-          var prev = project(p, p.pz);
-          var depth = 1 - p.z / MAXZ;            // 0 远 -> 1 近
-          var alpha = Math.max(0.05, Math.min(1, depth));
-          var r = p.size * (0.3 + depth * 1.8);
-
-          // 拖尾线
-          ctx.strokeStyle = p.color;
-          ctx.globalAlpha = alpha * 0.85;
-          ctx.lineWidth = r;
-          ctx.lineCap = "round";
-          ctx.beginPath();
-          ctx.moveTo(prev.x, prev.y);
-          ctx.lineTo(cur.x, cur.y);
-          ctx.stroke();
-
-          // 头部亮点
-          ctx.globalAlpha = alpha;
-          ctx.fillStyle = p.color;
-          ctx.beginPath();
-          ctx.arc(cur.x, cur.y, r * 0.7, 0, Math.PI * 2);
-          ctx.fill();
-        }
-        ctx.globalAlpha = 1;
-        if (!reduce) requestAnimationFrame(tick);
-      }
-
-      resize();
-      tick();
-      window.addEventListener("resize", resize);
     })();
   </script>
 </body>
