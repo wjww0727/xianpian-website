@@ -189,6 +189,8 @@
           </defs>
           <rect width="100%" height="100%" fill="url(#grid)"/>
         </svg>
+        <!-- CursorWave 光标波纹（仅首屏Banner；原生canvas，颜色白色） -->
+        <canvas id="homeCursorWave" class="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true"></canvas>
         <!-- 抽象展厅柱廊剪影 -->
         <svg class="absolute bottom-0 right-0 hidden h-[70%] w-[46%] opacity-[0.10] md:block" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 400V300H40V400M80 400V300H120V400M160 400V300H200V400M240 400V300H280V400M320 400V300H360V400M400 400V300H440V400M480 400V300H520V400M560 400V300H600V400" stroke="#ffffff" stroke-width="6"/>
@@ -795,6 +797,131 @@
         var ro = new ResizeObserver(measure);
         ro.observe(gallery);
       }
+    })();
+  </script>
+  <script>
+    /* CursorWave 光标波纹动效（仅首屏Banner；参数对齐 reactbits CursorWave；白色点，不遮挡点击） */
+    (function () {
+      var canvas = document.getElementById("homeCursorWave");
+      if (!canvas) return;
+      var section = canvas.closest("#home");
+      var ctx = canvas.getContext("2d");
+      // 配置（来自用户给的 props）
+      var cellSize = 22;
+      var influenceRadiusVmin = 10;
+      var attackTime = 0.15;
+      var idleScale = 0.04;
+      var burstSpeed = 400;
+      var burstThickness = 575;
+      var opacity = 0.35;
+
+      var W = 0, H = 0, dpr = 1;
+      var dots = [];
+      var bursts = [];
+      var mouse = { x: -99999, y: -99999, vx: 0, vy: 0, lastX: 0, lastY: 0, lastT: 0, active: false };
+
+      function resize() {
+        var rect = section.getBoundingClientRect();
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = rect.width; H = rect.height;
+        canvas.width = Math.round(W * dpr);
+        canvas.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        buildDots();
+      }
+
+      function buildDots() {
+        dots = [];
+        for (var y = cellSize / 2; y < H; y += cellSize) {
+          for (var x = cellSize / 2; x < W; x += cellSize) {
+            dots.push({ x: x, y: y, s: idleScale });
+          }
+        }
+      }
+
+      function influenceRadius() {
+        return Math.min(window.innerWidth, window.innerHeight) * influenceRadiusVmin / 100;
+      }
+
+      function handlePoint(x, y) {
+        var now = performance.now();
+        var dt = (now - mouse.lastT) / 1000;
+        if (dt > 0) {
+          mouse.vx = (x - mouse.lastX) / dt;
+          mouse.vy = (y - mouse.lastY) / dt;
+        }
+        var speed = Math.sqrt(mouse.vx * mouse.vx + mouse.vy * mouse.vy);
+        if (mouse.active && speed > burstSpeed) {
+          bursts.push({ x: x, y: y, r: 0, maxR: burstThickness, speed: speed });
+        }
+        mouse.x = x; mouse.y = y; mouse.active = true;
+        mouse.lastX = x; mouse.lastY = y; mouse.lastT = now;
+      }
+
+      function onMove(e) {
+        var rect = section.getBoundingClientRect();
+        handlePoint(e.clientX - rect.left, e.clientY - rect.top);
+      }
+      function onTouch(e) {
+        if (e.touches && e.touches.length) {
+          var rect = section.getBoundingClientRect();
+          handlePoint(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
+        }
+      }
+      function onLeave() { mouse.active = false; mouse.x = -99999; mouse.y = -99999; }
+
+      var lastFrame = performance.now();
+      function tick() {
+        var now = performance.now();
+        var dt = Math.min((now - lastFrame) / 1000, 0.05);
+        lastFrame = now;
+        ctx.clearRect(0, 0, W, H);
+        var R = influenceRadius();
+
+        for (var bi = bursts.length - 1; bi >= 0; bi--) {
+          bursts[bi].r += bursts[bi].speed * dt * 0.6;
+          if (bursts[bi].r > bursts[bi].maxR) bursts.splice(bi, 1);
+        }
+
+        var ease = 1 - Math.pow(0.0001, dt / attackTime);
+        ctx.fillStyle = "rgba(255,255,255," + opacity + ")";
+
+        for (var i = 0; i < dots.length; i++) {
+          var d = dots[i];
+          var target = idleScale;
+          if (mouse.active) {
+            var dx = d.x - mouse.x, dy = d.y - mouse.y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < R) {
+              var k = 1 - dist / R;
+              target = Math.max(target, idleScale + k * (1 - idleScale));
+            }
+          }
+          for (var b = 0; b < bursts.length; b++) {
+            var br = bursts[b];
+            var bdx = d.x - br.x, bdy = d.y - br.y;
+            var bd = Math.sqrt(bdx * bdx + bdy * bdy);
+            var wave = Math.abs(bd - br.r);
+            if (wave < 40) {
+              var wk = (1 - wave / 40) * (1 - br.r / br.maxR);
+              target = Math.max(target, idleScale + wk * (1 - idleScale));
+            }
+          }
+          d.s += (target - d.s) * ease;
+          var rr = Math.max(cellSize * 0.5 * d.s, 0.4);
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, rr, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        requestAnimationFrame(tick);
+      }
+
+      resize();
+      tick();
+      window.addEventListener("resize", resize);
+      section.addEventListener("mousemove", onMove);
+      section.addEventListener("touchmove", onTouch, { passive: true });
+      section.addEventListener("mouseleave", onLeave);
     })();
   </script>
 </body>
