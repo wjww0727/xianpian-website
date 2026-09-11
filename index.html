@@ -209,7 +209,7 @@
     <div class="container-x flex h-16 items-center justify-between md:h-20">
       <!-- Logo -->
       <a href="#home" class="flex items-center" aria-label="徐州贤片网络科技有限公司">
-        <img src="assets/img/logo-原图.png" alt="徐州贤片网络科技有限公司" class="h-9 w-auto md:h-10" />
+        <img src="assets/img/logo.png" alt="徐州贤片网络科技有限公司" class="h-9 w-auto md:h-10" />
       </a>
 
       <!-- 桌面导航 -->
@@ -406,6 +406,10 @@
               <span class="rounded bg-slate-100 px-2.5 py-1 text-xs text-slate-600">党建展厅</span>
               <span class="rounded bg-slate-100 px-2.5 py-1 text-xs text-slate-600">科普展厅</span>
             </div>
+            <button type="button" id="openVideoBtn" class="mt-5 inline-flex items-center gap-1.5 rounded-lg bg-brand-blue px-4 py-2 text-xs font-medium text-white transition hover:bg-brand-blue-dark">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              观看展厅案例视频
+            </button>
           </div>
           <!-- 文化墙 -->
           <div class="service-card reveal delay-100">
@@ -693,7 +697,7 @@
       <div class="grid gap-10 md:grid-cols-3">
         <div>
           <a href="#home" class="inline-flex" aria-label="返回首页">
-            <img src="assets/img/logo-原图.png" alt="徐州贤片网络科技有限公司" class="h-10 w-auto" />
+            <img src="assets/img/logo.png" alt="徐州贤片网络科技有限公司" class="h-10 w-auto" />
           </a>
           <p class="mt-5 max-w-xs text-sm leading-7 text-white/65">
             以视觉赋能品牌，为政企打造展厅、文化、数字网站作品。一站式数字文化视觉解决方案服务商。
@@ -728,6 +732,19 @@
       </div>
     </div>
   </footer>
+
+  <!-- 展厅案例视频弹窗（B 站播放器） -->
+  <div id="videoModal" class="fixed inset-0 z-[80] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="展厅案例视频">
+    <div id="videoModalMask" class="absolute inset-0 bg-black/75" aria-hidden="true"></div>
+    <div class="relative w-full max-w-4xl rounded-xl bg-black shadow-2xl">
+      <button type="button" id="closeVideoBtn" class="absolute -top-3 -right-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white text-slate-700 shadow-lg transition hover:bg-slate-100" aria-label="关闭视频">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <div class="relative w-full overflow-hidden rounded-xl" style="aspect-ratio: 16/9;">
+        <iframe id="videoFrame" class="absolute inset-0 h-full w-full" src="" frameborder="0" allowfullscreen allow="autoplay; fullscreen; encrypted-media" title="展厅案例视频"></iframe>
+      </div>
+    </div>
+  </div>
 
   <!-- 提交提示 -->
   <div id="toast" class="pointer-events-none fixed bottom-8 left-1/2 z-[60] -translate-x-1/2 translate-y-4 rounded-lg bg-brand-blue-deep px-5 py-3.5 text-sm font-medium text-white opacity-0 shadow-2xl transition duration-300">
@@ -1091,6 +1108,37 @@
       } else {
         activate();
       }
+    })();
+  </script>
+  <script>
+    /* 展厅设计卡片：点击弹出 B 站视频弹窗（只动展厅卡，其它业务卡不变） */
+    (function () {
+      var btn = document.getElementById('openVideoBtn');
+      var modal = document.getElementById('videoModal');
+      var mask = document.getElementById('videoModalMask');
+      var closeBtn = document.getElementById('closeVideoBtn');
+      var frame = document.getElementById('videoFrame');
+      if (!btn || !modal) return;
+      var BV_URL = 'https://player.bilibili.com/player.html?bvid=BV1pkYL6vEdG&autoplay=0&danmaku=0&high_quality=1&as_wide=1&t=22';
+
+      function openModal() {
+        frame.src = BV_URL;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        frame.src = ''; // 停止播放
+        document.body.style.overflow = '';
+      }
+      btn.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+      mask.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+      });
     })();
   </script>
 </body>
